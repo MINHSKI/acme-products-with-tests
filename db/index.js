@@ -1,6 +1,9 @@
 const conn = require('./conn');
 
 const Product = require('./Product');
+const Category = require('./Category');
+
+Product.belongsTo(Category, { as: 'cat' });
 
 const sync = ()=> {
   return conn.sync({ force: true });
@@ -9,6 +12,7 @@ const sync = ()=> {
 module.exports = {
   sync,
   models: {
-    Product
+    Product,
+    Category
   }
 };
